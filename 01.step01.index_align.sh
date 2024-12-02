@@ -21,8 +21,8 @@ chromap --preset hic -r ${EntityID}.fa -x ${EntityID}.index \
 
 echo "Alilgn Done."
 
-samtools view -@ 20 -b aligned.sam | samtools sort -@ 20 -o aligned.bam
-samtools view -@ 20 -b -F 4 -F 2048 aligned.bam -o aligned.pair.bam
+samtools view -@ ${Threads} -b aligned.sam | samtools sort -@ 20 -o aligned.bam
+samtools view -@ ${Threads} -b -F 4 -F 2048 aligned.bam -o aligned.pair.bam
 
 echo "Filter Done."
 

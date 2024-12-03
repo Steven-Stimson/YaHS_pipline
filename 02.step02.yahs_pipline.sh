@@ -32,6 +32,7 @@ rm -f ${TEST_OUTDIR}/${out}_inital_break* &  rm -f ${TEST_OUTDIR}/${out}_r*
 source /opt/software/miniconda3/bin/activate java
 (java -jar ${juicer_tools} ${TEST_OUTDIR}/${out}.JBAT.txt ${TEST_OUTDIR}/${out}.JBAT.hic <(cat ${EntityID}.chrom.sizes) >${TEST_OUTDIR}/05.Generate_.hic_file.log 2>&1) && (echo "Generate .hic file Done.")
 
+rm -f ${TEST_OUTDIR}/${out}_scaffolds_final.* & rm -f ${TEST_OUTDIR}/${out}*.txt & rm -f ${TEST_OUTDIR}/${out}*.bin & rm -f ${TEST_OUTDIR}/${out}.JBAT.assembly.agp
 echo "Successful."
 
 ################################# END OF YAHS SCAFFOLDING TEST #################################

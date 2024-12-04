@@ -26,7 +26,7 @@ samtools view -@ ${Threads} -b -F 4 -F 2048 aligned.bam -o aligned.pair.bam
 echo "Filter Done."
 
 export PATH=/opt/software/miniconda3/envs/java/bin:$PATH
-java -jar /opt/software/picard/picard.jar MarkDuplicates -I aligned.pair.bam -O ${SampleID}.hicaln.dedup.bam -REMOVE_DUPLICATES true -M dedup_metrics.txt
+java -jar /opt/software/picard/picard.jar MarkDuplicates I=aligned.pair.bam O=${SampleID}.hicaln.dedup.bam REMOVE_DUPLICATES=true M=dedup_metrics.txt
 
 echo "Dedup Done."
 

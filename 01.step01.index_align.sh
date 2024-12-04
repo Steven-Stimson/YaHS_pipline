@@ -8,10 +8,6 @@ export Contigs=$3
 HiC_R1=$4
 HiC_R2=$5
 
-#ln -sf $Contigs ${EntityID}.fa
-#$export Contigs=${Contigs}
-#export EntityID=${EntityID}
-perl -e '($ENV{Contigs} =~ /.gz$/) ? (`gzip -cd $ENV{Contigs} > $ENV{EntityID}.fa`) : (`cp $ENV{Contigs} $ENV{EntityID}.fa`)'
 samtools faidx ${EntityID}.fa
 chromap -i -r ${EntityID}.fa -o ${EntityID}.index 2>&1 | perl -ne '(/number of bases: (\d+)\.$/) && (print "assembly $1\n")'> ${EntityID}.chrom.sizes
 

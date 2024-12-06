@@ -5,7 +5,7 @@ TEST_OUTDIR="YaHS_result"
 mkdir -p ${TEST_OUTDIR}
 
 ################################ START OF YAHS SCAFFOLDING TEST ################################
-#### download the EntityID data
+#### preprare EntityID data
 EntityID=$1
 out="${EntityID}_out"
 contigs="${EntityID}.fa" # need to be indexed, i.e., ${EntityID}.contigs.fasta.gz.fai is presented

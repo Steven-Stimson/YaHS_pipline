@@ -4,8 +4,9 @@ export PATH=/opt/software/miniconda3/envs/chromap/bin:$PATH
 
 export EntityID=$1
 Threads=$2
-HiC_R1=$3
-HiC_R2=$4
+export Contigs=$3
+HiC_R1=$4
+HiC_R2=$5
 
 samtools faidx ${EntityID}.fa > 01.step01.index_align.sh.log 2>&1
 chromap -i -r ${EntityID}.fa -o ${EntityID}.index 2>&1 | perl -ne '(/number of bases: (\d+)\.$/) && (print "assembly $1\n")'> ${EntityID}.chrom.sizes
@@ -20,7 +21,7 @@ chromap --preset hic -r ${EntityID}.fa -x ${EntityID}.index \
 
 echo "Alilgn Done."
 
-samtools view -@ ${Threads} -b aligned.sam | samtools sort -@ 20 -o aligned.bam
+samtools view -@ ${Threads} -b aligned.sam | samtools sort -@ ${Threads} -o aligned.bam
 samtools view -@ ${Threads} -b -F 4 -F 2048 aligned.bam -o aligned.pair.bam
 
 echo "Filter Done."

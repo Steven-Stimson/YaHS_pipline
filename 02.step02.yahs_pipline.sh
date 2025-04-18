@@ -14,6 +14,10 @@ hicaln="${EntityID}.hicaln.dedup.bam" # could be .bed, .bam or .bin file
 Restriction_site=$2
 juicer_tools="/opt/software/juicer_tools/juicer_tools_1.19.02.jar pre"
 
+#### store hic alignment bam file
+cp $hicaln ${TEST_OUTDIR}
+
+
 #### run yahs scaffolding
 if [ -z "$2" ]; then
 (${YaHS_DIR}/yahs --file-type BAM -o ${TEST_OUTDIR}/${out} ${contigs} ${hicaln} > ${TEST_OUTDIR}/01.YaHS_scaffolding.log 2>&1) && (echo "YaHS scaffolding DONE.")
